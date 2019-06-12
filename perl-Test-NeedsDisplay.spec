@@ -4,13 +4,17 @@
 #
 Name     : perl-Test-NeedsDisplay
 Version  : 1.07
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Summary  : 'Ensure that tests needing a display have one'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-2.0
 Requires: perl-Test-NeedsDisplay-license = %{version}-%{release}
+Requires: xauth
+Requires: xkbcomp
+Requires: xkeyboard-config
+Requires: xvfb-run
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Module::Install)
 BuildRequires : util-linux
