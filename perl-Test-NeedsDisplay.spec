@@ -4,13 +4,14 @@
 #
 Name     : perl-Test-NeedsDisplay
 Version  : 1.07
-Release  : 3
+Release  : 4
 URL      : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Summary  : 'Ensure that tests needing a display have one'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-2.0
 Requires: perl-Test-NeedsDisplay-license = %{version}-%{release}
+Requires: perl-Test-NeedsDisplay-perl = %{version}-%{release}
 Requires: xauth
 Requires: xkbcomp
 Requires: xkeyboard-config
@@ -47,14 +48,24 @@ Group: Default
 license components for the perl-Test-NeedsDisplay package.
 
 
+%package perl
+Summary: perl components for the perl-Test-NeedsDisplay package.
+Group: Default
+Requires: perl-Test-NeedsDisplay = %{version}-%{release}
+
+%description perl
+perl components for the perl-Test-NeedsDisplay package.
+
+
 %prep
 %setup -q -n Test-NeedsDisplay-1.07
+cd %{_builddir}/Test-NeedsDisplay-1.07
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -64,7 +75,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -73,7 +84,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Test-NeedsDisplay
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-NeedsDisplay/LICENSE
+cp %{_builddir}/Test-NeedsDisplay-1.07/LICENSE %{buildroot}/usr/share/package-licenses/perl-Test-NeedsDisplay/f11692fc652e231edd2a23a60c72d9be8a840e0c
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -86,7 +97,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Test/NeedsDisplay.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -94,4 +104,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Test-NeedsDisplay/LICENSE
+/usr/share/package-licenses/perl-Test-NeedsDisplay/f11692fc652e231edd2a23a60c72d9be8a840e0c
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Test/NeedsDisplay.pm
