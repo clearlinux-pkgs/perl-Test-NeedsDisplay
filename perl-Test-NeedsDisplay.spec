@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-NeedsDisplay
 Version  : 1.07
-Release  : 5
+Release  : 6
 URL      : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Summary  : 'Ensure that tests needing a display have one'
@@ -108,4 +108,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/Test/NeedsDisplay.pm
+/usr/lib/perl5/vendor_perl/5.30.3/Test/NeedsDisplay.pm
