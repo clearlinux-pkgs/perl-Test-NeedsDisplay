@@ -5,7 +5,7 @@
 #
 Name     : perl-Test-NeedsDisplay
 Version  : 1.07
-Release  : 15
+Release  : 16
 URL      : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NeedsDisplay-1.07.tar.gz
 Summary  : 'Ensure that tests needing a display have one'
